@@ -9,7 +9,7 @@ package minipascal;
 import minipascal.AnaliseSintatica.SourceFile;
 import minipascal.AnaliseSintatica.Scanner;
 import minipascal.AnaliseSintatica.Parser;
-import minipascal.AnaliseSintatica.Data;
+
 
 /**
  *
@@ -121,7 +121,7 @@ public class MiniPascal {
         //compila o programa P, path sourceName
         compiledOK = compileProgram(sourceName, objectName, false, false);
         if(compiledOK){
-            System.out.println("\n" + Data.tokenCount + " Tokens");
+            System.out.println("OK");
         }
     }
     
