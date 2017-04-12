@@ -56,6 +56,7 @@ public class Parser {
     public void parseIdentifier() {
         accept(Token.IDENTIFIER);
     }
+
     /*
     *
     *<corpo> ::= <declarações> <comando-composto>
@@ -63,9 +64,9 @@ public class Parser {
     **/
     public void parseCorpo() {
         parseDeclaracoes();
-        parseComandoComposto();
+        //parseComandoComposto();
     }
-    
+
     /*
     *<declarações> ::= <declaração> ; | <declarações> <declaração> ; | <vazio>
     **/
@@ -75,11 +76,40 @@ public class Parser {
         accept(Token.COLON);
         accept(Token.INTEGER);
     }
+
     /*
-    *
+    * <comando-composto> ::= begin <lista-de-comandos> end
     **/
     public void parseComandoComposto() {
         accept(Token.BEGIN);
+        parseListaComandos();
         accept(Token.END);
     }
+
+    /*
+    *<lista-de-comandos> ::= ε | (<comando> ;)
+    *
+    **/
+    public void parseListaComandos() {
+        parseComando();
+    }
+
+    /*
+    * <comando-composto> ::= begin <lista-de-comandos> end
+    **/
+    public void parseComando() {
+        parseAtribuicao();
+    }
+
+    /*
+    *<atribuição> ::= <variável> := <expressão>
+    *
+    **/
+    public void parseAtribuicao() {
+        accept(Token.IDENTIFIER);
+        accept(Token.BECOMES);
+        accept(Token.INTLIT);
+        accept(Token.SEMICOLON);
+    }
+
 }
