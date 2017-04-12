@@ -281,8 +281,9 @@ public final class Scanner {
         //pos.finish = sourceFile.getCurrentLine();
         tok = new Token(kind, currentSpelling.toString());
         //if (debug)
-          System.out.print(tok.spelling + " ");
+        System.out.print(tok.spelling + " ");
         //return tok;
+        Data.tokenCount++;
         return tok;
     }
 
