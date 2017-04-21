@@ -6,9 +6,9 @@ final class Token extends Object {
 
   protected int kind;
   protected String spelling;
- // protected SourcePosition position;
+  protected SourcePosition position;
 
-  public Token(int kind, String spelling) {
+  public Token(int kind, String spelling, SourcePosition position) {
     if (kind == Token.IDENTIFIER) {
       int currentKind = firstReservedWord;
       boolean searching = true;
@@ -31,6 +31,8 @@ final class Token extends Object {
       this.kind = kind;    
     }
     this.spelling = spelling;
+    this.position = position;
+
   }
 
   public static String spell (int kind) {

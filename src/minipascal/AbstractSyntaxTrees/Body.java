@@ -14,8 +14,9 @@ import minipascal.AnaliseSintatica.SourcePosition;
 public class Body extends AST {
     public VarDeclaration V;
     
-    public Body(SourcePosition thePosition) {
+    public Body(VarDeclaration vAST,SourcePosition thePosition) {
         super(thePosition);
+        this.V = vAST;
     }
 
     public Object visit(Visitor v, Object o) {

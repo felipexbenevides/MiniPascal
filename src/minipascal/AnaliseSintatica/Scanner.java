@@ -57,7 +57,7 @@ public final class Scanner {
             case '!': {
                 takeIt();
                 while ((currentChar != SourceFile.EOL) && (currentChar != SourceFile.EOT)) {
-                    takeIt();
+                    takeIt();   
                 }
                 if (currentChar == SourceFile.EOL) {
                     takeIt();
@@ -260,7 +260,7 @@ public final class Scanner {
     //public Token scan () {
     public Token scan() {
         Token tok;
-        // SourcePosition pos;
+        SourcePosition pos;
         int kind;
         currentlyScanningToken = false;
         while (currentChar == '!'
@@ -273,13 +273,16 @@ public final class Scanner {
 
         currentlyScanningToken = true;
         currentSpelling = new StringBuffer("");
-        //pos = new SourcePosition();
-        //pos.start = sourceFile.getCurrentLine();
+        pos = new SourcePosition();
+        pos.start = sourceFile.getCurrentLine();
 
         kind = scanToken();
 
-        //pos.finish = sourceFile.getCurrentLine();
-        tok = new Token(kind, currentSpelling.toString());
+        pos.finish = sourceFile.getCurrentLine();
+        //System.out.println("\n");
+        //System.out.println(pos);
+        
+        tok = new Token(kind, currentSpelling.toString(),pos);
         //if (debug)
         System.out.print(tok.spelling + " ");
         //return tok;

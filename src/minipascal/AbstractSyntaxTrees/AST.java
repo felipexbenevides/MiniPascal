@@ -4,7 +4,9 @@ package minipascal.AbstractSyntaxTrees;
 import minipascal.AnaliseSintatica.SourcePosition;
 
 public abstract class AST {
-
+    
+  public SourcePosition	position;
+  //public RuntimeEntity  entity;
   public AST (SourcePosition thePosition) {
     position = thePosition;
     //entity = null;
@@ -16,6 +18,5 @@ public abstract class AST {
 
   public abstract Object visit(Visitor v, Object o);
 
-  public SourcePosition	position;
-  //public RuntimeEntity  entity;
+  
 }
