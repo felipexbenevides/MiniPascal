@@ -13,13 +13,13 @@ import minipascal.AnaliseSintatica.SourcePosition;
  */
 public class VarDeclaration extends AST {
 
-    public String Type;
-    public String Identifier;
+    public String T;
+    public Identifier I;
 
-    public VarDeclaration(String Type, String Identifier, SourcePosition thePosition) {
+    public VarDeclaration(Identifier iAST, String tAST, SourcePosition thePosition) {
         super(thePosition);
-        this.Type = Type;
-        this.Identifier = Identifier;
+        this.I = iAST;       
+        this.T = tAST;
     }
 
     @Override

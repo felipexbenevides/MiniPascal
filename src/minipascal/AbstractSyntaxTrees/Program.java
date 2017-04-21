@@ -16,12 +16,14 @@ package minipascal.AbstractSyntaxTrees;
 import minipascal.AnaliseSintatica.SourcePosition;
 
 public class Program extends AST {
-
     public Identifier I;
     public Body B;
-
-    public Program(SourcePosition thePosition) {
+    
+    
+    public Program(Identifier iAST, Body bAST,SourcePosition thePosition) {
         super(thePosition);
+        this.I = iAST;
+        this.B = bAST;
     }
 
     public Object visit(Visitor v, Object o) {

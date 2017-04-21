@@ -5,11 +5,8 @@
  */
 package minipascal;
 
-
-import minipascal.AnaliseSintatica.SourceFile;
-import minipascal.AnaliseSintatica.Scanner;
-import minipascal.AnaliseSintatica.Parser;
-import minipascal.AnaliseSintatica.Data;
+import minipascal.AnaliseSintatica.*;
+import minipascal.AbstractSyntaxTrees.*;
 
 /**
  *
@@ -25,21 +22,19 @@ public class MiniPascal {
     static String objectName = "obj.tam";
     private static Scanner scanner;
     private static Parser parser;
-    //private static Program theAST;
-
+    private static Program theAST;
 
     static boolean compileProgram (String sourceName, String objectName,
                                    boolean showingAST, boolean showingTable) {
 
-        System.out.println("-_-_-_-_-_-_-_-_-_-" +
-                           "LFC Compiler v0.1(Java)" +
-                           "-_-_-_-_-_-_-_-_-_-");
+        System.out.println("-_-_-_-_-_-_-_-_-_- LFC Compiler v0.1(Java) -_-_-_-_-_-_-_-_-_-");
         System.out.println("Programa fonte : " + sourceName);
         System.out.println("Programa objeto: " + objectName);
-        System.out.println("-------------------------------------------------------------");
+        System.out.println("\n");
+        //System.out.println("*************************************************************");
+        System.out.println("-_-_-_-_-_-_-_-_-_-_-_ Análise Sintática _-_-_-_-_-_-_-_-_-_-_-");
+        //System.out.println("*************************************************************");
 
-
-        System.out.println("Análise Sintática");
         
         //carrega o arquivo em source
         SourceFile source = new SourceFile(sourceName);
@@ -49,8 +44,9 @@ public class MiniPascal {
             System.exit(1);
         }
         scanner  = new Scanner(source);
-        parser   = new Parser(scanner);
-        parser.parseProgram();
+        parser   = new Parser(scanner);        
+        
+        theAST = parser.parseProgram(); // 1st pass
         
 /*      
         reporter = new ErrorReporter();

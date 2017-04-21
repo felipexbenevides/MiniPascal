@@ -15,9 +15,14 @@ public class Identifier extends AST {
 
     public String type;
     public AST decl;
+    public String spelling;
 
-    public Identifier(SourcePosition thePosition) {
+    public Identifier(String s,SourcePosition thePosition) {
         super(thePosition);
+        this.spelling = s;
+        this.type = null;
+        this.decl = null;
+        
     }
 
     public Object visit(Visitor v, Object o) {
